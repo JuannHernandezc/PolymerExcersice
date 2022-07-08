@@ -1,0 +1,72 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+//Imports Components
+<link rel="import" href="./bower_components/iron-collapse/iron-collapse.html"> 
+
+<dom-module id="musical-instrument">
+  <template>
+    <style>
+      :host {
+        display: block;
+        margin-bottom: 10px;
+        padding: 10px 15px;
+        background-color: rgb(48, 61, 117);
+        color: white;
+        border-radius: 6px;
+        box-shadow: 1px 1px 2px 1px black;
+      }
+      h1 {
+        text-align: center;
+        text-decoration: underline;
+      }
+      h1:hover {
+        cursor: pointer;
+        transform: scale(1.1,1.1);
+        transition: .5s;
+      }
+      p {
+        color:beige;
+      }
+      p span{
+        font-weight: bold;
+        color: rgb(214, 150, 252);
+      }
+    </style>
+    <h1 on-click="toggle">[[name]]</h1>
+    <iron-collapse opened="[[deploy]]">
+      <p><span>Descripción:</span> [[description]]</p>
+      <p><span>Clasificación:</span> [[classification]]</p>
+    </iron-collapse>
+  </template>
+
+  <script>
+    class MusicalInstrument extends Polymer.Element {
+      static get is() { return 'musical-instrument'; }
+      static get properties() {
+        return {
+          name:{
+            type: String,
+            value: "Nombre Instrumento"
+          },
+          classification:{
+            type: String,
+            value: "Clasificación Instrumento"
+          },
+          description:{
+            type: String,
+            value: "Descripcion Instrumento"
+          },
+          deploy:{
+            type: Boolean,
+            value: false
+          }
+        };
+      }
+      toggle(){
+        this.deploy = !this.deploy;
+      }
+    }
+
+    window.customElements.define(MusicalInstrument.is, MusicalInstrument);
+  </script>
+</dom-module>

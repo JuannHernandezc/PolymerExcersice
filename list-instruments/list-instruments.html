@@ -1,0 +1,74 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../musical-instrument/musical-instrument.html">
+
+<dom-module id="list-instruments">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        padding: 20px;
+      }
+      h1{
+        padding: 10px;
+        color: white;
+        text-align: center;
+      }
+      button{
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        background-color: green;
+        color: white;
+        font-weight: bold;
+      }
+      button:hover {
+        cursor: pointer;
+        transform: scale(1.1,1.1);
+        transition: .7s;
+      }
+      musical-instrument{
+        width: 90%;
+      }
+    </style>
+    <iron-ajax 
+      id="ajax"
+      url="http://localhost:3000/instruments"
+      last-response="{{instruments}}"
+      loading="{{cargando}}"
+    ></iron-ajax>
+    <h1>Lista de Instrumentos</h1>
+
+    <template is="dom-repeat" items="[[instruments]]">
+     <musical-instrument name="[[item.name]]" description="[[item.description]]" classification="[[item.classification]]"></musical-instrument> 
+    </template>
+
+    <button on-click="obtener">Recuperar Datos</button>
+  </template>
+
+  <script>
+    class ListInstruments extends Polymer.Element {
+      static get is() { return 'list-instruments'; }
+      static get properties() {
+        return {
+          instruments: {
+            type: Array,
+            value: function(){
+              return [];
+            }
+          }
+        };
+      }
+
+      obtener() {
+        this.$.ajax.generateRequest();
+      }
+    }
+
+    window.customElements.define(ListInstruments.is, ListInstruments);
+  </script>
+</dom-module>

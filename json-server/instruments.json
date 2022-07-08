@@ -1,0 +1,14 @@
+{
+ "instruments":[
+  {
+   "name":"Guitarra",
+   "classification":"Cuerda",
+   "description":"Instrumento musical de cuerda, con una caja de resonancia y seis cuerdas en un mastil"
+  },
+  {
+   "name":"Tambor",
+   "classification":"Percusion",
+   "description":"Instrumento de natueraleza variada que permite golpear una membrana que producen el sonido"
+  }
+ ]
+}

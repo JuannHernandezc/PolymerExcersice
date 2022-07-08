@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="list-instruments">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `list-instruments`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ListInstruments extends Polymer.Element {
+      static get is() { return 'list-instruments'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'list-instruments'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ListInstruments.is, ListInstruments);
+  </script>
+</dom-module>
